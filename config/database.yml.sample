@@ -8,8 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: rabbitmq-consumer
+  database: rabbitmq_consumer_development_<%= ENV['QUEUE_ID'] %>
 
 test:
   <<: *default
-  database: reabbitmq-consumer-test
+  database: rabbitmq_consumer_development_<%= ENV['QUEUE_ID'] %>
