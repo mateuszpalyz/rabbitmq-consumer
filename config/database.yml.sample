@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  timeout: 5000
+  user:
+  password:
+
+development:
+  <<: *default
+  database: rabbitmq-consumer
+
+test:
+  <<: *default
+  database: reabbitmq-consumer-test
