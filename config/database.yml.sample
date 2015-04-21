@@ -12,4 +12,4 @@ development:
 
 test:
   <<: *default
-  database: rabbitmq_consumer_development_<%= ENV['QUEUE_ID'] %>
+  database: rabbitmq_consumer_test_<%= ENV['QUEUE_ID'] %>
