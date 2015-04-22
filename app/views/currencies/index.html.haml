@@ -1,0 +1,11 @@
+.panel.panel-success.rabbit-table
+  .panel-heading
+    %h4 Rabbitmq Consumer Stats
+  %table.table
+    %tr
+      %th UUID
+      %th Date
+    - @currencies.each do |currency|
+      %tr
+        %td= currency.uuid
+        %td= currency.created_at
