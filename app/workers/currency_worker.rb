@@ -4,16 +4,17 @@ class CurrencyWorker
 
   def work(message)
     message = JSON.parse(message)
-    create_currency_from_message(message)
-    Publisher.publish(acknowledgement(message))
-    ack!
+    currency = Currency.new(message.slice('uuid', 'rates'))
+
+    if currency.save
+      Publisher.publish(acknowledgement(message))
+      ack!
+    else
+      reject!
+    end
   end
 
   private
-
-  def create_currency_from_message(message)
-    Currency.create(message.slice(:uuid, :rates))
-  end
 
   def acknowledgement(message)
     message.merge(id: ENV['QUEUE_ID']).except(:rates)

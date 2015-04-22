@@ -13,8 +13,12 @@ class CurrencyWorkerTest < ActiveSupport::TestCase
     end
   end
 
-  test 'should return ack' do
+  test 'should return ack when currency is successfully created' do
     assert_equal :ack, @worker.work(@message)
+  end
+
+  test 'should return reject when currency is not created' do
+    assert_equal :reject, @worker.work({uuid: 'aaa'}.to_json)
   end
 
   test 'should call publisher to publish ack' do
