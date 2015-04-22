@@ -12,6 +12,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bunny'
 gem 'sneakers'
 gem 'mocha', group: :test
+gem 'haml'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
